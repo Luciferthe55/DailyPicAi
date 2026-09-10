@@ -35,7 +35,7 @@ jobs:
           sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
       - name: Build APK
-        working-directory: DailyPicAI/DailyPicAI
+        working-directory: DailyPicAI
         run: gradle assembleDebug --stacktrace
 
       - name: Upload APK
