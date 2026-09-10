@@ -28,14 +28,18 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-      - name: Fix Kotlin plugin for AGP 9
-        working-directory: DailyPicAI
-        run: |
-          sed -i '/id("org.jetbrains.kotlin.android")/d' app/build.gradle.kts
+
       - name: Install SDK
         run: |
           yes | sdkmanager --licenses || true
           sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Fix project for AGP 9
+        working-directory: DailyPicAI
+        run: |
+          sed -i '/id("org.jetbrains.kotlin.android")/d' app/build.gradle.kts
+          sed -i 's/compileSdk = 37/compileSdk = 36/' app/build.gradle.kts
+          sed -i 's/targetSdk = 37/targetSdk = 36/' app/build.gradle.kts
 
       - name: Build APK
         working-directory: DailyPicAI
