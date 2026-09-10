@@ -35,12 +35,12 @@ jobs:
           sdkmanager "platforms;android-37" "build-tools;36.0.0"
 
       - name: Build APK
-        working-directory: working-directory: DailyPicAI/DailyPicAI
+        working-directory: DailyPicAI/DailyPicAI
         run: gradle assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: DailyPicAI-debug-apk
-          path: DailyPicAI/DailyPicAI/app/build/outputs/apk/debug/app-debug.apk
+          path: DailyPicAI/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 7
